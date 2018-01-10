@@ -1,4 +1,4 @@
-package dashboard.opensrp.org.jandjdashboard;
+package dashboard.opensrp.org.jandjdashboard.fragments;
 
 import android.app.Activity;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import dashboard.opensrp.org.jandjdashboard.R;
+import dashboard.opensrp.org.jandjdashboard.dashboardCategoryDetailActivity;
+import dashboard.opensrp.org.jandjdashboard.dashboardCategoryListActivity;
 import dashboard.opensrp.org.jandjdashboard.dummy.DummyContent;
 
 /**

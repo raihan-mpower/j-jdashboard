@@ -1,4 +1,4 @@
-package dashboard.opensrp.org.jandjdashboard;
+package dashboard.opensrp.org.jandjdashboard.fragments;
 
 import android.app.Activity;
 import android.content.res.Resources;
@@ -14,11 +14,13 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import dashboard.opensrp.org.jandjdashboard.R;
 import dashboard.opensrp.org.jandjdashboard.adapter.scheduleCardAdapter;
+import dashboard.opensrp.org.jandjdashboard.dashboardCategoryDetailActivity;
+import dashboard.opensrp.org.jandjdashboard.dashboardCategoryListActivity;
 import dashboard.opensrp.org.jandjdashboard.dummy.DummyContent;
 
 /**
@@ -27,7 +29,7 @@ import dashboard.opensrp.org.jandjdashboard.dummy.DummyContent;
  * in two-pane mode (on tablets) or a {@link dashboardCategoryDetailActivity}
  * on handsets.
  */
-public class upcomingScheduleStatusDetailFragment extends Fragment {
+public class familyPlanningStatusDetailFragment extends Fragment {
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
@@ -47,7 +49,7 @@ public class upcomingScheduleStatusDetailFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public upcomingScheduleStatusDetailFragment() {
+    public familyPlanningStatusDetailFragment() {
     }
 
     @Override
@@ -71,19 +73,8 @@ public class upcomingScheduleStatusDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.upcoming_schedule_status_detail, container, false);
-        recyclerView = (RecyclerView)rootView.findViewById(R.id.recycler_view);
+        View rootView = inflater.inflate(R.layout.family_planning_status_detail, container, false);
 
-        iconList = new ArrayList<>();
-        titleList = new ArrayList<>();
-        adapter = new scheduleCardAdapter(getActivity(), iconList, titleList);
-
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 4);
-        recyclerView.setLayoutManager(mLayoutManager);;
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(4, dpToPx(2), true));
-        recyclerView.setAdapter(adapter);
-        prepareAlbums();
 
 
 

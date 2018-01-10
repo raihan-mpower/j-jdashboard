@@ -17,6 +17,9 @@ import android.widget.TextView;
 
 
 import dashboard.opensrp.org.jandjdashboard.dummy.DummyContent;
+import dashboard.opensrp.org.jandjdashboard.fragments.dashboardCategoryDetailFragment;
+import dashboard.opensrp.org.jandjdashboard.fragments.familyPlanningStatusDetailFragment;
+import dashboard.opensrp.org.jandjdashboard.fragments.upcomingScheduleStatusDetailFragment;
 
 import java.util.List;
 
@@ -67,6 +70,14 @@ public class dashboardCategoryListActivity extends AppCompatActivity {
             // large-screen layouts (res/values-w900dp).
             // If this view is present, then the
             // activity should be in two-pane mode.
+                Bundle arguments = new Bundle();
+                arguments.putString(upcomingScheduleStatusDetailFragment.ARG_ITEM_ID,"" );
+                upcomingScheduleStatusDetailFragment fragment = new upcomingScheduleStatusDetailFragment();
+                fragment.setArguments(arguments);
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.dashboardcategory_detail_container, fragment)
+                        .commit();
+
             mTwoPane = true;
         }
     }
@@ -92,7 +103,7 @@ public class dashboardCategoryListActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.mItem = mValues.get(position);
             holder.mContentView.setText(mValues.get(position).content);
             holder.mIdView.setImageDrawable(menudrawable.get(position));
@@ -101,13 +112,29 @@ public class dashboardCategoryListActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     if (mTwoPane) {
-                        Bundle arguments = new Bundle();
-                        arguments.putString(upcomingScheduleStatusDetailFragment.ARG_ITEM_ID, holder.mItem.id);
-                        upcomingScheduleStatusDetailFragment fragment = new upcomingScheduleStatusDetailFragment();
-                        fragment.setArguments(arguments);
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.dashboardcategory_detail_container, fragment)
-                                .commit();
+                        switch (position) {
+                            case 0: {
+                                Bundle arguments = new Bundle();
+                                arguments.putString(upcomingScheduleStatusDetailFragment.ARG_ITEM_ID, holder.mItem.id);
+                                upcomingScheduleStatusDetailFragment fragment = new upcomingScheduleStatusDetailFragment();
+                                fragment.setArguments(arguments);
+                                getSupportFragmentManager().beginTransaction()
+                                        .replace(R.id.dashboardcategory_detail_container, fragment)
+                                        .commit();
+                                break;
+                            }
+                            case 1: {
+                                Bundle arguments = new Bundle();
+                                arguments.putString(familyPlanningStatusDetailFragment.ARG_ITEM_ID, holder.mItem.id);
+                                familyPlanningStatusDetailFragment fragment = new familyPlanningStatusDetailFragment();
+                                fragment.setArguments(arguments);
+                                getSupportFragmentManager().beginTransaction()
+                                        .replace(R.id.dashboardcategory_detail_container, fragment)
+                                        .commit();
+                                break;
+                            }
+
+                        }
                     } else {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, dashboardCategoryDetailActivity.class);
