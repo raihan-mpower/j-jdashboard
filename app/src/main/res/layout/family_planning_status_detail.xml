@@ -47,13 +47,21 @@
             android:layout_margin="2dp"
             app:cardBackgroundColor="@color/greencardcolor"
             android:elevation="3dp"
-            android:padding="20dp"
+            android:padding="10dp"
             android:layout_weight="1">
-
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:scaleType="fitEnd"
+                android:layout_gravity="bottom"
+                android:src="@drawable/numberlivebirth"
+                />
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp">
 
                 <TextView
                     android:text="1300"
@@ -91,13 +99,22 @@
             android:layout_margin="2dp"
             app:cardBackgroundColor="@color/pinkcardcolor"
             android:elevation="3dp"
-            android:padding="20dp"
+            android:padding="10dp"
             android:layout_weight="1">
-
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:scaleType="fitEnd"
+                android:layout_gravity="bottom"
+                android:src="@drawable/newelcotranscard"
+                />
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent">
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                >
 
                 <TextView
                     android:text="400"
@@ -136,11 +153,20 @@
             android:layout_margin="2dp"
             app:cardBackgroundColor="@color/purplecardcolor"
             android:elevation="3dp"
-            android:padding="20dp"
+            android:padding="10dp"
             android:layout_weight="1">
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:scaleType="fitEnd"
+                android:layout_gravity="bottom"
+                android:src="@drawable/numberdeath"
+                />
 
             <LinearLayout
                 android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -181,11 +207,20 @@
             android:layout_margin="2dp"
             app:cardBackgroundColor="@color/lightgreencardcolor"
             android:elevation="3dp"
-            android:padding="20dp"
+            android:padding="10dp"
             android:layout_weight="1">
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:scaleType="fitEnd"
+                android:layout_gravity="bottom"
+                android:src="@drawable/deathcard"
+                />
 
             <LinearLayout
                 android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -226,11 +261,20 @@
             android:layout_margin="2dp"
             app:cardBackgroundColor="@color/lightbluecardcolor"
             android:elevation="3dp"
-            android:padding="20dp"
+            android:padding="10dp"
             android:layout_weight="1">
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:scaleType="fitEnd"
+                android:layout_gravity="bottom"
+                android:src="@drawable/deathcardblue"
+                />
 
             <LinearLayout
                 android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -266,14 +310,226 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></LinearLayout>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="@color/tableborder"
+            android:layout_height="match_parent"
+            android:layout_width="180dp">
+        <TextView
+            android:text="Monthly"
+            android:background="@color/alttablerow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/monthly_label"
+            android:layout_marginTop="1dp"
+            android:layout_marginLeft="1dp"
+            android:textSize="12sp"
+            android:padding="1dp" />
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_width="@dimen/small_column_width"
+                android:background="@color/tableborder"
+                android:layout_height="match_parent">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/alttablerow"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1">
+                <TextView
+                    android:text="Pill"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/pill_label"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:textSize="12sp" />
+                </TableRow>
+            </TableLayout>
+
+        <TableLayout
+            android:layout_width="@dimen/small_column_width"
+            android:background="@color/tableborder"
+            android:layout_height="match_parent">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/alttablerow"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1">
+        <TextView
+            android:text="Condom"
+            android:background="@color/alttablerow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/condom_label"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:textSize="12sp" />
+        </TableRow>
+        </TableLayout>
+        <TableLayout
+            android:layout_width="@dimen/small_column_width"
+            android:background="@color/tableborder"
+            android:layout_height="match_parent">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/alttablerow"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1">
+        <TextView
+            android:text="Injectable"
+            android:background="@color/alttablerow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/injectable_label"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:textSize="12sp" />
+            </TableRow>
+        </TableLayout>
+        <TableLayout
+            android:layout_width="@dimen/small_column_width"
+            android:background="@color/tableborder"
+            android:layout_height="match_parent">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/alttablerow"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1">
+        <TextView
+            android:text="IUD"
+            android:background="@color/alttablerow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/iud_label"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:textSize="12sp" />
+            </TableRow>
+        </TableLayout>
+        <TableLayout
+            android:layout_width="@dimen/small_column_width"
+            android:background="@color/tableborder"
+            android:layout_height="match_parent">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/alttablerow"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1">
+        <TextView
+            android:text="Implant"
+            android:background="@color/alttablerow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/implant_label"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:textSize="12sp" />
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            android:layout_width="@dimen/larger_column_width"
+            android:background="@color/tableborder"
+            android:layout_height="match_parent">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/alttablerow"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                android:text="Permanent Method"
+                android:background="@color/alttablerow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/pm_label"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="@color/tableborder"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Male"
+                    android:background="@color/alttablerow"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/pm_male_label"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:textSize="12sp" />
+                <TextView
+                    android:text="Female"
+                    android:background="@color/alttablerow"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/pm_female_label"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+            </LinearLayout>
+        </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            android:layout_width="@dimen/small_column_width"
+            android:background="@color/tableborder"
+            android:layout_height="match_parent">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/alttablerow"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1">
+        <TextView
+            android:text="Total"
+            android:background="@color/alttablerow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/total_label"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:textSize="12sp" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:background="@color/tableborder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
         <TableLayout android:layout_height="match_parent"
             android:layout_width="180dp">
@@ -427,9 +683,8 @@
         </TableLayout>
 
         <TableLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_width="@dimen/small_column_width"
+            android:layout_height="match_parent">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -562,9 +817,8 @@
         </TableLayout>
 
         <TableLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_width="@dimen/small_column_width"
+            android:layout_height="match_parent">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -697,9 +951,8 @@
         </TableLayout>
 
         <TableLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_width="@dimen/small_column_width"
+            android:layout_height="match_parent">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -832,9 +1085,8 @@
         </TableLayout>
 
         <TableLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_width="@dimen/small_column_width"
+            android:layout_height="match_parent">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -968,9 +1220,8 @@
         </TableLayout>
 
         <TableLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_width="@dimen/small_column_width"
+            android:layout_height="match_parent">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -1103,9 +1354,8 @@
         </TableLayout>
 
         <TableLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_width="@dimen/small_column_width"
+            android:layout_height="match_parent">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -1239,9 +1489,8 @@
         </TableLayout>
 
         <TableLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_width="@dimen/small_column_width"
+            android:layout_height="match_parent">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -1374,9 +1623,8 @@
         </TableLayout>
 
         <TableLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_width="@dimen/small_column_width"
+            android:layout_height="match_parent">
 
             <TableRow
                 android:layout_width="match_parent"
