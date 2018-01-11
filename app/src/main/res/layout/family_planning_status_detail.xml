@@ -310,14 +310,14 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
         <LinearLayout
             android:orientation="horizontal"
             android:background="@color/tableborder"
             android:layout_height="match_parent"
-            android:layout_width="180dp">
+            android:layout_width="190dp">
         <TextView
             android:text="Monthly"
             android:background="@color/alttablerow"
@@ -500,7 +500,7 @@
         </TableLayout>
 
         <TableLayout
-            android:layout_width="@dimen/small_column_width"
+            android:layout_width="match_parent"
             android:background="@color/tableborder"
             android:layout_height="match_parent">
             <TableRow
@@ -527,12 +527,12 @@
     <LinearLayout
         android:orientation="horizontal"
         android:background="@color/tableborder"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
 
         <TableLayout android:layout_height="match_parent"
-            android:layout_width="180dp">
+            android:layout_width="190dp">
 
 
             <TableRow
@@ -599,7 +599,8 @@
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
                     <TextView
                         android:text="Left"
@@ -1623,7 +1624,7 @@
         </TableLayout>
 
         <TableLayout
-            android:layout_width="@dimen/small_column_width"
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TableRow
