@@ -12,6 +12,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -87,14 +88,6 @@ public class anc_pnc_encc_StatusDetailFragment extends Fragment {
         addItemsOnRiskStatusSpinner(rootView);
         addItemsOnScheduleTypeSpinner(rootView);
 
-        LinearLayout graphHolder = (LinearLayout) rootView.findViewById(R.id.graph_holder);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.weight = 1;
-        graphHolder.removeAllViews();
-        graphHolder.addView(addAncGraphs(),layoutParams);
-        graphHolder.addView(addAncGraphs(),layoutParams);
-        graphHolder.addView(addAncGraphs(),layoutParams);
-        graphHolder.addView(addAncGraphs(),layoutParams);
 
         return rootView;
     }
@@ -112,10 +105,10 @@ public class anc_pnc_encc_StatusDetailFragment extends Fragment {
 
     }
 
-    public void addItemsOnScheduleTypeSpinner(View view) {
+    public void addItemsOnScheduleTypeSpinner(final View mainview) {
 
-        risk_status = (Spinner)view.findViewById(R.id.schedule_type);
-        List<String> list = new ArrayList<String>();
+        risk_status = (Spinner)mainview.findViewById(R.id.schedule_type);
+        final List<String> list = new ArrayList<String>();
         list.add("ANC");
         list.add("PNC");
         list.add("ENCC");
@@ -123,17 +116,75 @@ public class anc_pnc_encc_StatusDetailFragment extends Fragment {
                 android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         risk_status.setAdapter(dataAdapter);
+        risk_status.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(list.get(i).equalsIgnoreCase("ANC")){
+                    launchAncGraphs(mainview);
+                }
+                if(list.get(i).equalsIgnoreCase("PNC")){
+                    launchPncGraphs(mainview);
+                }
+                if(list.get(i).equalsIgnoreCase("ENCC")){
+                    launchEnccGraphs(mainview);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
-    public GraphView addAncGraphs(){
+    private void launchEnccGraphs(View view) {
+        LinearLayout graphHolder = (LinearLayout) view.findViewById(R.id.graph_holder);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.weight = 1;
+        graphHolder.removeAllViews();
         final HashMap<String,DataPoint> stringDataPointHashMap = new HashMap<String,DataPoint>();
         stringDataPointHashMap.put("Completed",new DataPoint(0, 20));
-        stringDataPointHashMap.put("Due",new DataPoint(1, 5));
+        stringDataPointHashMap.put("Due",new DataPoint(1, 10));
         stringDataPointHashMap.put("Post Due",new DataPoint(2, 14));
         stringDataPointHashMap.put("Expired",new DataPoint(3, 10));
+        graphHolder.addView(addAncGraphs(stringDataPointHashMap,"ENCC 1"),layoutParams);
+        graphHolder.addView(addAncGraphs(stringDataPointHashMap,"ENCC 2"),layoutParams);
+        graphHolder.addView(addAncGraphs(stringDataPointHashMap,"ENCC 3"),layoutParams);
+    }
 
+    private void launchPncGraphs(View view) {
+        LinearLayout graphHolder = (LinearLayout) view.findViewById(R.id.graph_holder);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.weight = 1;
+        graphHolder.removeAllViews();
+        final HashMap<String,DataPoint> stringDataPointHashMap = new HashMap<String,DataPoint>();
+        stringDataPointHashMap.put("Completed",new DataPoint(0, 20));
+        stringDataPointHashMap.put("Due",new DataPoint(1, 10));
+        stringDataPointHashMap.put("Post Due",new DataPoint(2, 14));
+        stringDataPointHashMap.put("Expired",new DataPoint(3, 10));
+        graphHolder.addView(addAncGraphs(stringDataPointHashMap,"PNC 1"),layoutParams);
+        graphHolder.addView(addAncGraphs(stringDataPointHashMap,"PNC 2"),layoutParams);
+        graphHolder.addView(addAncGraphs(stringDataPointHashMap,"PNC 3"),layoutParams);
+    }
 
+    private void launchAncGraphs(View view) {
+        LinearLayout graphHolder = (LinearLayout) view.findViewById(R.id.graph_holder);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layoutParams.weight = 1;
+        graphHolder.removeAllViews();
+        final HashMap<String,DataPoint> stringDataPointHashMap = new HashMap<String,DataPoint>();
+        stringDataPointHashMap.put("Completed",new DataPoint(0, 20));
+        stringDataPointHashMap.put("Due",new DataPoint(1, 10));
+        stringDataPointHashMap.put("Post Due",new DataPoint(2, 14));
+        stringDataPointHashMap.put("Expired",new DataPoint(3, 10));
+        graphHolder.addView(addAncGraphs(stringDataPointHashMap,"ANC 1"),layoutParams);
+        graphHolder.addView(addAncGraphs(stringDataPointHashMap,"ANC 2"),layoutParams);
+        graphHolder.addView(addAncGraphs(stringDataPointHashMap,"ANC 3"),layoutParams);
+        graphHolder.addView(addAncGraphs(stringDataPointHashMap,"ANC 4"),layoutParams);
 
+    }
+
+    public GraphView addAncGraphs(final HashMap<String,DataPoint> stringDataPointHashMap,String Label){
         GraphView graph = new GraphView(getActivity());
         graph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.NONE);
         graph.getViewport().setDrawBorder(true);
@@ -165,9 +216,11 @@ public class anc_pnc_encc_StatusDetailFragment extends Fragment {
         });
         double xInterval=1.0;
         graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setYAxisBoundsManual(true);
         if (series instanceof BarGraphSeries ) {
             // Hide xLabels for now as no longer centered in the grid, but left aligned per the other types
             graph.getGridLabelRenderer().setHorizontalLabelsVisible(false);
+            graph.getViewport().setMinY(0);
             // Shunt the viewport, per v3.1.3 to show the full width of the first and last bars.
             graph.getViewport().setMinX(series.getLowestValueX() - (xInterval/2.0));
             graph.getViewport().setMaxX(series.getHighestValueX() + (xInterval/2.0));
@@ -176,7 +229,7 @@ public class anc_pnc_encc_StatusDetailFragment extends Fragment {
             graph.getViewport().setMaxX(series.getHighestValueX());
         }
 
-        graph.getGridLabelRenderer().setHorizontalAxisTitle("ANC 1");
+        graph.getGridLabelRenderer().setHorizontalAxisTitle(Label);
 
         series.setSpacing(10);
         return graph;
