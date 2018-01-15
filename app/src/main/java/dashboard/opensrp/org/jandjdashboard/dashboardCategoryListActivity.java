@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 
 import dashboard.opensrp.org.jandjdashboard.dummy.DummyContent;
+import dashboard.opensrp.org.jandjdashboard.fragments.anc_pnc_encc_StatusDetailFragment;
 import dashboard.opensrp.org.jandjdashboard.fragments.dashboardCategoryDetailFragment;
 import dashboard.opensrp.org.jandjdashboard.fragments.familyPlanningStatusDetailFragment;
 import dashboard.opensrp.org.jandjdashboard.fragments.upcomingScheduleStatusDetailFragment;
@@ -41,6 +42,7 @@ public class dashboardCategoryListActivity extends AppCompatActivity {
      * device.
      */
     private boolean mTwoPane;
+    public static View previousViewSelectedInLIST = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,15 +53,6 @@ public class dashboardCategoryListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         View recyclerView = findViewById(R.id.dashboardcategory_list);
         assert recyclerView != null;
@@ -108,9 +101,17 @@ public class dashboardCategoryListActivity extends AppCompatActivity {
             holder.mContentView.setText(mValues.get(position).content);
             holder.mIdView.setImageDrawable(menudrawable.get(position));
 
+
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (previousViewSelectedInLIST == null){
+                        previousViewSelectedInLIST = holder.mView;
+                    }else{
+                        previousViewSelectedInLIST.setBackgroundColor(getResources().getColor(R.color.mainblue));
+                        previousViewSelectedInLIST = holder.mView;
+                    }
+                    holder.mView.setBackground(getResources().getDrawable(R.drawable.rotatepointer));
                     if (mTwoPane) {
                         switch (position) {
                             case 0: {
@@ -127,6 +128,16 @@ public class dashboardCategoryListActivity extends AppCompatActivity {
                                 Bundle arguments = new Bundle();
                                 arguments.putString(familyPlanningStatusDetailFragment.ARG_ITEM_ID, holder.mItem.id);
                                 familyPlanningStatusDetailFragment fragment = new familyPlanningStatusDetailFragment();
+                                fragment.setArguments(arguments);
+                                getSupportFragmentManager().beginTransaction()
+                                        .replace(R.id.dashboardcategory_detail_container, fragment)
+                                        .commit();
+                                break;
+                            }
+                            case 2: {
+                                Bundle arguments = new Bundle();
+                                arguments.putString(anc_pnc_encc_StatusDetailFragment.ARG_ITEM_ID, holder.mItem.id);
+                                anc_pnc_encc_StatusDetailFragment fragment = new anc_pnc_encc_StatusDetailFragment();
                                 fragment.setArguments(arguments);
                                 getSupportFragmentManager().beginTransaction()
                                         .replace(R.id.dashboardcategory_detail_container, fragment)

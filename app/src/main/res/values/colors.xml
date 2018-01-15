@@ -16,4 +16,8 @@
     <color name="purplecardcolor">#6b5796</color>
     <color name="lightgreencardcolor">#8fc73e</color>
     <color name="lightbluecardcolor">#34c2d0</color>
+    <color name="completedgraphbarcolor">#4971b7</color>
+    <color name="duegraphbarcolor">#54823a</color>
+    <color name="postduegraphbarcolor">#fec110</color>
+    <color name="expiredgraphbarcolor">#c45c29</color>
 </resources>
