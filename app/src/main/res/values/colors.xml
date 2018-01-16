@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="mainblue">#2ea0da</color>
+    <color name="titlebarblue">#379cca</color>
     <color name="mainbluedivide">#489eef</color>
     <color name="backgroundcolor">#f0eeef</color>
     <color name="textcolor">#ffffff</color>
@@ -20,4 +21,6 @@
     <color name="duegraphbarcolor">#54823a</color>
     <color name="postduegraphbarcolor">#fec110</color>
     <color name="expiredgraphbarcolor">#c45c29</color>
+    <color name="darkblue">#5d85c3</color>
+    <color name="selectedlistred">#d13f3f</color>
 </resources>
