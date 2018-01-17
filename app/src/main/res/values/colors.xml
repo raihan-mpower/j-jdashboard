@@ -23,4 +23,7 @@
     <color name="expiredgraphbarcolor">#c45c29</color>
     <color name="darkblue">#5d85c3</color>
     <color name="selectedlistred">#d13f3f</color>
+    <color name="focuseddatemonthcolor">#999999</color>
+    <color name="unfocuseddatemonthcolor">#cfcfcf</color>
+    <color name="datepickeralttablerow">#e1dfe0</color>
 </resources>

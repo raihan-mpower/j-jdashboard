@@ -2,6 +2,8 @@ package dashboard.opensrp.org.jandjdashboard;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -28,7 +31,9 @@ import dashboard.opensrp.org.jandjdashboard.fragments.anc_pnc_encc_StatusDetailF
 import dashboard.opensrp.org.jandjdashboard.fragments.dashboardCategoryDetailFragment;
 import dashboard.opensrp.org.jandjdashboard.fragments.familyPlanningStatusDetailFragment;
 import dashboard.opensrp.org.jandjdashboard.fragments.upcomingScheduleStatusDetailFragment;
+import dashboard.opensrp.org.jandjdashboard.widgets.calendarPoPUpWindow;
 
+import java.util.Calendar;
 import java.util.List;
 
 import static dashboard.opensrp.org.jandjdashboard.dummy.DummyContent.addDrawables;
@@ -105,18 +110,25 @@ public class dashboardCategoryListActivity extends AppCompatActivity {
 
             case R.id.date_filter:
                 Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-                View popupView = getLayoutInflater().inflate(R.layout.advanced_date_picker, null);
-                final PopupWindow popupWindow = new PopupWindow(
-                        popupView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-                popupWindow.showAsDropDown(toolbar);
+                calendarPoPUpWindow calendarPoPUpWindow = new calendarPoPUpWindow(this);
+                calendarPoPUpWindow.showAsDropDown(toolbar);
 
                 return true;
 
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
-                return super.onOptionsItemSelected(item);
+                return false;
 
+        }
+    }
+
+    private void assignfontTOCalendarMonth(CalendarView calendarView) {
+        ViewGroup vg = (ViewGroup)calendarView.getChildAt(0);
+        View child = vg.getChildAt(0);
+        if(child instanceof TextView){
+            ((TextView)child).setTextSize(12);
+            ((TextView)child).setTextColor(getResources().getColor(R.color.focuseddatemonthcolor));
         }
     }
 
