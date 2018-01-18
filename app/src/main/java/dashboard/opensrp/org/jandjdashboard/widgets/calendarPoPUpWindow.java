@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -130,7 +131,8 @@ public class calendarPoPUpWindow extends PopupWindow {
         tocalendarView.setDate(date.getTime());
         todate = new Date(tocalendarView.getDate());
         fromdate = new Date(fromcalendarView.getDate());
-        date_in_words_label.setText(fromdate.toString()+ "--"+todate.toString());
+        SimpleDateFormat format = new SimpleDateFormat("MMM dd, yyyy");
+        date_in_words_label.setText(format.format(fromdate)+ " - "+format.format(todate));
     }
 
     private void assignfontTOCalendarMonth(CalendarView calendarView,Context context) {

@@ -90,7 +90,11 @@
                         android:layout_weight="1" />
                     <TextView
                         android:text=""
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="10sp"
+                        android:padding="5dp"
                         android:layout_width="200dp"
+                        android:layout_marginLeft="20dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/date_in_words_label" />
                 </LinearLayout>
